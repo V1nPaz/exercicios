@@ -4,10 +4,9 @@ const taskInput = document.querySelector("input");
 
 function taskAdd(){
 
-    let task = taskInput.value;
-    let taskIndex = list.indexOf(task);
+    let taskIndex = list.indexOf(taskInput.value); 
 
-    if (task == "" ){
+    if (taskInput.value == "" ){
         return 0;
     }else if (taskIndex != -1){
         alert("Essa tarefa já existe");
@@ -15,11 +14,11 @@ function taskAdd(){
     }
 
     console.log(taskIndex);
-    list.push(task);
-    listUl.innerHTML += "<li>" + task + "</li>";
-
+    list.push(taskInput.value);
+    updateList();
     console.log(list);
 
+    return 1;
 }
 
 function taskRem(){
@@ -30,14 +29,19 @@ function taskRem(){
         alert("Essa tarefa não existe");
         return 0;
     }
-    
+
     list.splice(taskIndex, 1);
-    listUl.innerHTML = "";
-    list.forEach(task => {
-        listUl.innerHTML += "<li>" + task + "</li>";    
-    });
-    
+    updateList();
     console.log(list);
+    return 1;
 }
 
+function updateList(){
+    listUl.innerHTML = "";
+    list.forEach(task => {
+        listUl.innerHTML += "<li>" + task + "</li>";
+    });
+}
 
+//Implementar botao/link que deleta por item
+//Estudar localS torage
