@@ -1,11 +1,11 @@
 let list = [];
 let listUl = document.getElementById("listUl");
-const taskInput = document.querySelector("input");
+let taskInput = document.querySelector("input");
 
 function taskAdd(){
-
+    console.log("adicionando");
     let taskIndex = list.indexOf(taskInput.value); 
-
+    console.log(taskIndex);
     if (taskInput.value == "" ){
         return 0;
     }else if (taskIndex != -1){
@@ -13,33 +13,43 @@ function taskAdd(){
         return 0;
     }
 
-    console.log(taskIndex);
     list.push(taskInput.value);
-    updateList();
+    renderList();
     console.log(list);
 
     return 1;
 }
 
-function taskRem(){
-    let taskIndex = list.indexOf(taskInput.value);
-    if (taskInput.value == ""){
-        return 0;
-    }else if (taskIndex == -1){
+function taskRem(task){
+    console.log("removendo");
+    let taskIndex = list.indexOf(task);
+    
+    if (taskIndex == -1){
         alert("Essa tarefa não existe");
         return 0;
     }
-
     list.splice(taskIndex, 1);
-    updateList();
+    renderList();
     console.log(list);
     return 1;
 }
 
-function updateList(){
+function renderList(){
     listUl.innerHTML = "";
     list.forEach(task => {
-        listUl.innerHTML += "<li>" + task + "</li>";
+        var a = document.createElement("a");
+        a.onclick =  () => taskRem(task);
+        a.href = "#";
+        a.innerText += "Deletar    ";
+        
+        var li = document.createElement("li");
+
+        listUl.appendChild(li);
+        li.appendChild(a);
+        li.append(task);
+
+
+        //listUl.innerHTML += "<li>" + task +  + "<>EXCLUIR</a>" +  "</li>" ;
     });
 }
 
