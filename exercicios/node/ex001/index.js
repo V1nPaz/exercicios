@@ -2,7 +2,7 @@ const express = require("express");
 
 const server = express();
 
-server.get("/node", () => {
+server.get("/node", (req, res) => {
     console.log("Acessou");
 })
 
