@@ -10,4 +10,4 @@ server.get('/cursos/:id', (req, res) => {
     return res.json({curso: cursos[id]});
 })
 
-server.listen(8080);
+server.listen(3000);
