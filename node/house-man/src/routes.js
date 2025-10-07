@@ -11,8 +11,16 @@ routes.get("/", (req, res) => {
     return res.json({ok : true});
 });
 
-routes.post("/teste", SessionController.store);
-
+//Users
+routes.post("/users", SessionController.store);
+routes.get("/users", SessionController.index);
+routes.delete("/users", SessionController.destroy);
+//Houses
+routes.get("/houses", HouseController.index);
 routes.post("/houses", upload.single("thumbnail"), HouseController.store);
+routes.delete("/houses", HouseController.destroy);
+
+routes.get("/house", HouseController.show);
+
 
 export default routes;
