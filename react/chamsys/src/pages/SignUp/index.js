@@ -8,6 +8,13 @@ function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    function handleSubmit(e){
+        e.preventDefault();
+        if (name !== "" && email !== "" && password !== ""){
+            alert("FAZER CADASTRO!!!!!!!!!");
+        }
+    }
+
     return (
         <div className="signup-container">
 
@@ -15,22 +22,44 @@ function SignUp() {
                 <img src={logo} alt="logo" />
             </div>
             <div className="register-area">
-                <form className="register-form">
+                <form className="register-form" onSubmit={handleSubmit}>
                     <label>Nome</label>
                     <br />
-                    <input type="text" id="nome-input" onChange={(e) => setName(e.target.value)} value={name} placeholder="Gustavo Menezes" />
+                    <input 
+                        type="text" 
+                        id="nome-input" 
+                        onChange={(e) => setName(e.target.value)} 
+                        value={name} 
+                        placeholder="Gustavo Menezes" 
+                    /> 
                     <br />
+                    
                     <label>Email</label>
                     <br />
-                    <input type="email" id="email-input" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="gustavomenezes@example.com" />
+                    <input 
+                        type="email" 
+                        id="email-input" 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        value={email} 
+                        placeholder="gustavomenezes@example.com" 
+                    />
                     <br />
+
                     <label>Senha</label>
                     <br />
-                    <input type="password" id="password-input" onChange={(e) => { setPassword(e.target.value) }} value={password} placeholder="********" />
+                    <input 
+                        type="password" 
+                        id="password-input" 
+                        onChange={(e) => { setPassword(e.target.value) }} 
+                        value={password} 
+                        placeholder="••••••••" 
+                    />
                     <br />
-                    <button type="submit" onClick="">Registrar</button>
+
+                    <button type="submit">Registrar</button>
                     <br />
-                    <h4>Já tem uma conta? Clique <Link to="/login">aqui</Link> para fazer login</h4>
+
+                    <h4>Já tem uma conta? Clique <Link to="/">aqui</Link> para fazer login</h4>
                 </form>
 
             </div>
