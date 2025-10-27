@@ -8,12 +8,11 @@ function SignIn(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, loadingAuth } = useContext(AuthContext);
 
     function handleSignIn(e){
         e.preventDefault();
         if (email !=="" && password !==""){
-            e.preventDefault();
             signIn(email, password);
         }
     }
@@ -35,7 +34,7 @@ function SignIn(){
                         id = "email-input" 
                         onChange={(e)=> setEmail(e.target.value)} 
                         value={email} 
-                        placeholder="email@example.com"
+                        placeholder="gustavo@example.com"
                     />
                     <br/>
                     
@@ -50,7 +49,7 @@ function SignIn(){
                     />
                     <br/>
 
-                    <button type="submit" >Confirmar</button>
+                    <button type="submit" >{loadingAuth ? "Pensando...": "Confirmar"}</button>
                     <h4>Não tem uma conta? Clique <Link to="/register">aqui</Link></h4> 
                 </form>
             </div>

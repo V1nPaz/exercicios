@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import { AuthContext } from "../../contexts/auth";
 
 function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleSubmit(e){
+    const { signUp, loadingAuth } = useContext(AuthContext);
+
+    function handleSignUp(e){
         e.preventDefault();
         if (name !== "" && email !== "" && password !== ""){
-            alert("FAZER CADASTRO!!!!!!!!!");
+            signUp(email, password, name)
         }
     }
 
@@ -22,7 +25,7 @@ function SignUp() {
                 <img src={logo} alt="logo" />
             </div>
             <div className="register-area">
-                <form className="register-form" onSubmit={handleSubmit}>
+                <form className="register-form" onSubmit={handleSignUp}>
                     <label>Nome</label>
                     <br />
                     <input 
@@ -56,7 +59,7 @@ function SignUp() {
                     />
                     <br />
 
-                    <button type="submit">Registrar</button>
+                    <button type="submit">{loadingAuth ?  "Pensando..." : "Cadastrar"}</button>
                     <br />
 
                     <h4>Já tem uma conta? Clique <Link to="/">aqui</Link> para fazer login</h4>

@@ -2,7 +2,9 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Erro from "../pages/Erro";
+import Dashboard from "../pages/dashboard";
 import AuthProvider from "../contexts/auth";
+import Private from "./private";
 
 function RoutesApp(){
     return(
@@ -10,11 +12,12 @@ function RoutesApp(){
         <BrowserRouter>
             <AuthProvider>
 
-            <Routes>
-                <Route path="/" element={ <SignIn/> }/>
-                <Route path="/register" element={ <SignUp/> }/>
-                <Route path="*" element ={ <Erro/> }/>
-            </Routes>
+                <Routes>
+                    <Route path="/" element={ <SignIn/> }/>
+                    <Route path="/register" element={ <SignUp/> }/>
+                    <Route path="/dashboard" element={<Private>  <Dashboard/> </Private>}/>
+                    <Route path="*" element ={ <Erro/> }/>
+                </Routes>
             </AuthProvider>
         </BrowserRouter>
     )
