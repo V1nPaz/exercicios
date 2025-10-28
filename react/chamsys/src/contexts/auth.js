@@ -42,7 +42,7 @@ export default function AuthProvider({ children }){
 
             let data = {
                 uid: uid,
-                mome: docSnap.data().nome,
+                nome: docSnap.data().nome,
                 email: value.user.email,
                 avatarUrl: docSnap.data().avatarUrl
             }
@@ -114,7 +114,9 @@ export default function AuthProvider({ children }){
             signUp,
             logout,
             loadingAuth,
-            loading
+            loading,
+            storageUser,
+            setUser
         }}>
             {children}
         </AuthContext.Provider>
