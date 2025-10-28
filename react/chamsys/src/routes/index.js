@@ -5,6 +5,7 @@ import Erro from "../pages/Erro";
 import Dashboard from "../pages/dashboard";
 import AuthProvider from "../contexts/auth";
 import Private from "./private";
+import Profile from "../pages/Profile";
 
 function RoutesApp(){
     return(
@@ -16,6 +17,7 @@ function RoutesApp(){
                     <Route path="/" element={ <SignIn/> }/>
                     <Route path="/register" element={ <SignUp/> }/>
                     <Route path="/dashboard" element={<Private>  <Dashboard/> </Private>}/>
+                    <Route path="/profile" element={<Private>  <Profile/> </Private>}/>
                     <Route path="*" element ={ <Erro/> }/>
                 </Routes>
             </AuthProvider>
